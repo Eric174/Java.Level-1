@@ -1,13 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
+
 
 public class Map extends JPanel {
 
     public static final int GAME_MODE_HVH = 0;
     public static final int GAME_MODE_HVA = 1;
+
 
     private static final int DOT_EMPTY = 0;
     private static final int DOT_HUMAN = 1;
@@ -27,10 +30,12 @@ public class Map extends JPanel {
     private static final Random RANDOM = new Random();
 
     private int[][] field;
+
     private int fieldSizeX;
     private int fieldSizeY;
     private int gameMode;
     private int winLength;
+
     private int cellWidth;
     private int cellHeight;
     private boolean isGameOver;
@@ -241,7 +246,23 @@ public class Map extends JPanel {
         return true;
     }
 
-    /*
+    Map() {
+        setBackground(Color.WHITE);
+        this.fieldSizeX = 1;
+        this.fieldSizeY = 1;
+    }
+
+    void startNewGame(int gameMode, int fieldSizeX, int fieldSizeY, int winLength) {
+        System.out.printf("Game mode: %d\nfieldSize: %d\nwinLength: %d",
+                gameMode, fieldSizeX, winLength);
+
+        this.fieldSizeX = fieldSizeX;
+        this.fieldSizeY = fieldSizeY;
+        this.gameMode = gameMode;
+        this.winLength = winLength;
+        repaint();
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -256,5 +277,4 @@ public class Map extends JPanel {
             g.drawLine(0, i * cellHeight, getWidth(), i * cellHeight);
         }
     }
-    */
 }
